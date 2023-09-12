@@ -65,7 +65,7 @@ export default function Navbar(){
             </div>
 
             {/*Cart*/}
-            <div id="cart_page" className={`${cartVisibility} w-[90%] right-4 sm:w-[70%] md:w-[60%] absolute top-[55px] sm:right-[40px] rounded-lg xl:w-[30%] bg-[#4F46E5] z-20 h-[100vh] px-14 py-5 text-white`}>
+            <div id="cart_page" className={`${cartVisibility} w-[90%] right-4 sm:w-[70%] md:w-[60%] absolute top-[55px] sm:right-[40px] rounded-lg xl:w-[30%] bg-[#4F46E5] z-20 px-14 py-5 text-white`}>
                 <h3 className="text-center text-2xl font-semibold">Your CodesWear Cart</h3>
                 <ol className="cart-items-list list-decimal font-medium text-lg mt-8">
                     <li className="my-3"> 
