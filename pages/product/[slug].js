@@ -1,8 +1,41 @@
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
-const Slug = () => {
+const Slug = ({addToCart}) => {
     const router = useRouter();
     const { slug } = router.query;
+
+    const [pincode, setPincode] = useState();
+    const [message, setMessage] = useState();
+    const [color, setColor] = useState('black');
+
+    const handlePinChange = (e) => {
+        setPincode(e.target.value);
+    }
+
+    const checkPin = async () => {
+        const res = await fetch('http://localhost:3000/api/pincodes',{"method":"GET"});
+        const pincodeArr = await res.json();
+        if (pincodeArr.includes(pincode)){
+            setMessage("You can order this product.");
+            setColor('green-600');
+        }
+        else{
+            setMessage("Sorry, we can't deliver at this pincode.");
+            setColor('red-500');
+        }
+    }
+
+    const addToCartLocal = (e) => {
+        const price = e.target.parentElement.firstChild.innerHTML;
+        const name = e.target.parentElement.parentElement.children[1].innerHTML;
+        const size = e.target.parentElement.parentElement.children[4].children[1].children[1].children[0].value;
+        e.target.innerHTML = "Added to Cart";
+        setTimeout(() => {
+            e.target.innerHTML = "Add To Cart";
+        },800);
+        addToCart(slug, 1, price, name, size, "hoodies");
+    }
 
     return (
         <section className="text-gray-600 body-font overflow-hidden">
@@ -76,13 +109,18 @@ const Slug = () => {
                             </div>
                             <div className="flex">
                                 <span className="title-font font-medium text-2xl text-gray-900">&#8377; 580</span>
-                                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Cart</button>
+                                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick = {addToCartLocal}>Add to Cart</button>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                     <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                                         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                                     </svg>
                                 </button>
                             </div>
+                            <div className="pincode_check flex w-[100%] justify-start mt-10">
+                                <input className="w-[60%] h-[40px] border-2 border-indigo-500 rounded-md pl-2" type="number" placeholder="Enter your pin" value={pincode} onChange={handlePinChange} />
+                                <button className="w-[36%] h-[40px]  ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={checkPin}>Check</button>
+                            </div>
+                            <p className={`text-${color} mt-5`}>{message}</p>
                         </div>
                 </div>
             </div>
