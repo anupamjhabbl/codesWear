@@ -4,7 +4,7 @@ import { AiOutlineMenu, AiFillMinusCircle } from "react-icons/ai"
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Navbar({ cart, clearCart }) {
+export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity}) {
     const [smallNavbar, setSmallNavbar] = useState("hidden");
     const [cartVisibility, setCartVisibility] = useState("hidden");
 
@@ -26,15 +26,51 @@ export default function Navbar({ cart, clearCart }) {
         }
     }
 
+    const addQuantityLocal = (e) => {
+        let product_id;
+        try{
+            if (e.target.nextSibling==null) {
+                product_id = e.target.parentElement.nextSibling.innerHTML;
+            }
+            else{
+                product_id = e.target.nextSibling.innerHTML;
+            }
+            addQuantity(product_id);
+        }
+        catch(err){
+            // make an alert
+        }
+    }
+
+    const decreaseQuantityLocal = (e) => {
+        let product_id;
+        try{
+            if (e.target.nextSibling==null) {
+                product_id = e.target.parentElement.nextSibling.innerHTML;
+            }
+            else{
+                product_id = e.target.nextSibling.innerHTML;
+            }
+            decreaseQuantity(product_id);
+        }
+        catch(err){
+            // make an alert
+        }
+    }
+
     let cartItemList = cart.map((element) => {
         return (
-            <li className="my-3">
+            <li className="my-3" key={element.product_id}>
                 <div className="flex justify-between items-center">
-                    <span>{element.product_id} </span>
+                    <span>{element.product_name} </span>
                     <div className="flex items-center">
-                        <AiFillMinusCircle />
+                        <AiFillMinusCircle onClick={decreaseQuantityLocal}/>
+                        <div className="hidden">{element.product_id}</div>
                         <span className="mx-3">{element.quantity}</span>
-                        <BsFillPlusCircleFill />
+                        <BsFillPlusCircleFill onClick={addQuantityLocal}/>
+                        <div className="hidden">{element.product_id}</div>
+                        <span className="ml-3">{parseInt(element.quantity)*parseInt(element.price)}</span>
+                        
                     </div>
                 </div>
             </li>

@@ -29,6 +29,32 @@ export default function App({ Component, pageProps }) {
     localStorage.setItem("codesWearCart",[]);
   }
 
+  const addQuantity = (product_id) => {
+    const mycart = cart;
+    for (let i=0;i<mycart.length;i++){
+      if (mycart[i].product_id === product_id){
+        mycart[i].quantity += 1;
+        break;
+      }
+    }
+    setCart(mycart);
+    localStorage.setItem("codesWearCart", JSON.stringify(mycart))
+  }
+
+  const decreaseQuantity = (product_id) => {
+    const mycart = cart;
+    for (let i=0;i<mycart.length;i++){
+      if (mycart[i].product_id === product_id){
+        if (mycart[i].quantity!=0){
+          mycart[i].quantity -= 1;
+        }
+        break;
+      }
+    }
+    setCart(mycart);
+    localStorage.setItem("codesWearCart", JSON.stringify(mycart))
+  }
+
   useEffect(()=>{
     if (localStorage.getItem("codesWearCart")!==null){
       if (localStorage.getItem("codesWearCart") !== ""){
@@ -43,8 +69,8 @@ export default function App({ Component, pageProps }) {
         <title>Codeswear: wear your code</title>
         <link rel="icon" href="/icon.jpeg" />
       </Head>
-      <Navbar cart={cart} addToCart={addToCart} clearCart={clearCart}/>
-      <Component cart={cart} addToCart={addToCart} clearCart={clearCart} {...pageProps} />
+      <Navbar cart={cart} addToCart={addToCart} clearCart={clearCart} addQuantity={addQuantity} decreaseQuantity={decreaseQuantity}/>
+      <Component cart={cart} addToCart={addToCart} clearCart={clearCart} {...pageProps} addQuantity={addQuantity} decreaseQuantity={decreaseQuantity} />
       <Footer/>
     </div>
   )
