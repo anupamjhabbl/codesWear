@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Alert from './../../component/alert';
 
-const Slug = ({addToCart}) => {
+const Slug = ({addToCart, alert, showAlert}) => {
     const router = useRouter();
     const { slug } = router.query;
 
@@ -44,12 +45,13 @@ const Slug = ({addToCart}) => {
             addToCart(slug, 1, price, name, size, "hoodies");
         }
         catch(err){
-            // make an alert
+            showAlert();
         }
     }
 
     return (
         <section className="text-gray-600 body-font overflow-hidden">
+            <Alert alert={alert}/>
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
                     <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto object-cover object-center rounded" src="/tshurt_image.jpg"/>

@@ -3,8 +3,10 @@ import { BsCart4, BsFillPlusCircleFill } from "react-icons/bs";
 import { AiOutlineMenu, AiFillMinusCircle } from "react-icons/ai"
 import Link from "next/link";
 import { useState } from "react";
+import Alert from './alert';
 
-export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity}) {
+export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity, alert, showAlert}) {
+    // console.log("Parent component cart:", cart);
     const [smallNavbar, setSmallNavbar] = useState("hidden");
     const [cartVisibility, setCartVisibility] = useState("hidden");
 
@@ -36,9 +38,10 @@ export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity}
                 product_id = e.target.nextSibling.innerHTML;
             }
             addQuantity(product_id);
+
         }
         catch(err){
-            // make an alert
+            showAlert();
         }
     }
 
@@ -54,37 +57,17 @@ export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity}
             decreaseQuantity(product_id);
         }
         catch(err){
-            // make an alert
+            showAlert();
         }
     }
 
-    let cartItemList = cart.map((element) => {
-        return (
-            <li className="my-3" key={element.product_id}>
-                <div className="flex justify-between items-center">
-                    <span>{element.product_name} </span>
-                    <div className="flex items-center">
-                        <AiFillMinusCircle onClick={decreaseQuantityLocal}/>
-                        <div className="hidden">{element.product_id}</div>
-                        <span className="mx-3">{element.quantity}</span>
-                        <BsFillPlusCircleFill onClick={addQuantityLocal}/>
-                        <div className="hidden">{element.product_id}</div>
-                        <span className="ml-3">{parseInt(element.quantity)*parseInt(element.price)}</span>
-                        
-                    </div>
-                </div>
-            </li>
-        )
-    })
-
     return (
         <div className="navbar_main w-[100%] relative">
-
             {/*Navbar*/}
             <nav className="w-[100%] flex justify-between items-center py-1 px-4">
                 <Link href="/">
                     <div className="logo flex items-center ">
-                        <Image src="/icon.jpeg" width={50} height={50} alt="icon" className="rounded" />
+                        <Image src="/icon.jpeg" width={50} height={50} alt="icon" className="rounded"/>
                         <p className="ml-3 font-semibold text-2xl">CodesWear</p>
                     </div>
                 </Link>
@@ -119,17 +102,34 @@ export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity}
             <div id="cart_page" className={`${cartVisibility} w-[90%] right-4 sm:w-[70%] md:w-[60%] absolute top-[55px] sm:right-[40px] rounded-lg xl:w-[30%] bg-indigo-400 z-20 px-14 py-5 text-white`}>
                 <h3 className="text-center text-2xl font-semibold">Your CodesWear Cart</h3>
                 {cart.length > 0 && <ol className="cart-items-list list-decimal font-medium text-lg mt-8">
-                    {cartItemList}
+                    {cart.map((element) => {
+            return (
+                <li className="my-3" key={element.product_id}>
+                    <div className="flex justify-between items-center">
+                        <span>{element.product_name} </span>
+                        <div className="flex items-center">
+                            <AiFillMinusCircle onClick={decreaseQuantityLocal}/>
+                            <div className="hidden">{element.product_id}</div>
+                            <span className="mx-3">{element.quantity}</span>
+                            <BsFillPlusCircleFill onClick={addQuantityLocal}/>
+                            <div className="hidden">{element.product_id}</div>
+                            <span className="ml-3">{parseInt(element.quantity)*parseInt(element.price)}</span>
+                            
+                        </div>
+                    </div>
+                </li>
+            )
+        })}
                 </ol>}
                 {cart.length == 0 &&
                     <p className="my-5 text-white">Your cart is empty. Please add Some Items to checkout.</p>
                 }
                 <div id="buttons" className="flex justify-around w-[100%] mt-5">
-                    <button className={` text-white bg-indigo-600 border-0 py-2  focus:outline-none hover:bg-indigo-700 rounded px-5 ${cart.length == 0 ? "hidden" : "block"}`}>Chekout</button>
+                    <Link href="/checkout"><button className={` text-white bg-indigo-600 border-0 py-2  focus:outline-none hover:bg-indigo-700 rounded px-5 ${cart.length == 0 ? "hidden" : "block"}`}>Chekout</button></Link>
                     <button className={` text-white bg-indigo-600 border-0 py-2 focus:outline-none hover:bg-indigo-700 rounded px-5 ${cart.length == 0 ? "hidden" : "block"}`} onClick={clearCart}>Clear Cart</button>
                 </div>
             </div>
-
+            <Alert alert={alert}/>
         </div>
     )
 }

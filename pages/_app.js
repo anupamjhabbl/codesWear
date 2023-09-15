@@ -6,6 +6,14 @@ import {useState, useEffect} from 'react';
 
 export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState([]);
+  const [alert, setAlert] = useState(false);
+
+  const showAlert = () => {
+    setAlert(true);
+    setTimeout(()=>{
+      setAlert(false);
+    },2000);
+  }
 
   const addToCart = (product_id, quantity, price, product_name, size, variant) => {
     let mycart = cart;
@@ -69,8 +77,8 @@ export default function App({ Component, pageProps }) {
         <title>Codeswear: wear your code</title>
         <link rel="icon" href="/icon.jpeg" />
       </Head>
-      <Navbar cart={cart} addToCart={addToCart} clearCart={clearCart} addQuantity={addQuantity} decreaseQuantity={decreaseQuantity}/>
-      <Component cart={cart} addToCart={addToCart} clearCart={clearCart} {...pageProps} addQuantity={addQuantity} decreaseQuantity={decreaseQuantity} />
+      <Navbar cart={cart} addToCart={addToCart} clearCart={clearCart} addQuantity={addQuantity} decreaseQuantity={decreaseQuantity} alert={alert} showAlert={showAlert}/>
+      <Component cart={cart} addToCart={addToCart} clearCart={clearCart} {...pageProps} addQuantity={addQuantity} decreaseQuantity={decreaseQuantity} alert={alert} showAlert={showAlert} />
       <Footer/>
     </div>
   )
