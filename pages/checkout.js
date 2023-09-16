@@ -55,7 +55,7 @@ export default function Checkout({ cart, clearCart }) {
                         <input type="email" id="pincode" name="pincode" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
-                <button className="text-white block my-10 w-[170px] bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mx-auto" onClick={payAmount}>Pay &#8377;{totalPrice}</button>
+                <Link href="/order"><button className="text-white block my-10 w-[170px] bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mx-auto" onClick={payAmount}>Pay &#8377;{totalPrice}</button></Link>
             </div>
             <div className="w-[100%] sm:[w-90%] md:w-[70%] mx-auto text-center mb-[70px]">
                 <ol>

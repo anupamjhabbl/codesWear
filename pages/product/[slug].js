@@ -45,6 +45,7 @@ const Slug = ({addToCart, alert, showAlert}) => {
             addToCart(slug, 1, price, name, size, "hoodies");
         }
         catch(err){
+            console.log("addToCart");
             showAlert();
         }
     }

@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const addToCart = (product_id, quantity, price, product_name, size, variant) => {
-    let mycart = cart;
+    let mycart = [...cart];
     let alreadyPresent = false;
     mycart.forEach( cartItem => {
       if (cartItem.product_id === product_id){
@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const addQuantity = (product_id) => {
-    const mycart = cart;
+    const mycart = [...cart];
     for (let i=0;i<mycart.length;i++){
       if (mycart[i].product_id === product_id){
         mycart[i].quantity += 1;
@@ -50,7 +50,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const decreaseQuantity = (product_id) => {
-    const mycart = cart;
+    const mycart = [...cart];
     for (let i=0;i<mycart.length;i++){
       if (mycart[i].product_id === product_id){
         if (mycart[i].quantity!=0){

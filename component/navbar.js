@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BsCart4, BsFillPlusCircleFill } from "react-icons/bs";
 import { AiOutlineMenu, AiFillMinusCircle } from "react-icons/ai"
+import {RiAccountCircleFill} from 'react-icons/ri';
 import Link from "next/link";
 import { useState } from "react";
 import Alert from './alert';
@@ -41,6 +42,7 @@ export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity,
 
         }
         catch(err){
+            console.log("addQuantityLocal");
             showAlert();
         }
     }
@@ -57,6 +59,7 @@ export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity,
             decreaseQuantity(product_id);
         }
         catch(err){
+            console.log("decreaseQuantityLocal");
             showAlert();
         }
     }
@@ -81,8 +84,11 @@ export default function Navbar({ cart, clearCart, addQuantity, decreaseQuantity,
                 <div className="cart flex">
                     <div className="block sm:hidden mr-4 font-bold text-3xl" id="small_navbar" onClick={changeNavbarState}><AiOutlineMenu /></div>
                     <div onClick={changeCartVisibility}>
-                        <BsCart4 className="text-3xl" />
+                        <BsCart4 className="text-3xl mr-3" />
                     </div>
+                    <Link href="/login">
+                        <RiAccountCircleFill className="text-3xl"/>
+                    </Link>
 
                 </div>
             </nav>
