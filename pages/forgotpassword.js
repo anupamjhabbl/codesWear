@@ -10,8 +10,8 @@ const forgotpassword = () => {
       <p class="text-md text-gray-600 text-center mt-8 mb-6">A password reset link will be sent to you after this</p> 
       <form>
         <div class="mb-6 w-[90%] mx-auto">
-          <label for="email" class="block mb-2 text-md text-indigo-600">Email:</label>
-          <input type="email" id="email" name="email" class="w-full px-4 py-2 border-1 border-indigo-300 outline-indigo-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required/>
+          <label htmlFor="email" class="block mb-2 text-md text-indigo-600">Email:</label>
+          <input type="email" id="email" name="email" class="w-full px-4 py-2 border-2 border-indigo-500 outline-indigo-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required/>
         </div>
         <button type="submit" class="w-32 bg-gradient-to-r from-indigo-400 to-indigo-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-4">Continue</button>
       </form>

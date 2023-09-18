@@ -21,37 +21,37 @@ export default function Checkout({ cart, clearCart }) {
                 </div>
                 <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                     <div className="relative flex-grow w-full">
-                        <label for="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
+                        <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
                         <input type="text" id="full-name" name="full-name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                     <div className="relative flex-grow w-full">
-                        <label for="email" className="leading-7 text-sm text-gray-600">Email</label>
+                        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
                         <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
                 <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                     <div className="relative flex-grow w-full">
-                        <label for="full-name" className="leading-7 text-sm text-gray-600">Your Address</label>
+                        <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Your Address</label>
                         <input type="text" id="address" name="address" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
                 <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                     <div className="relative flex-grow w-full">
-                        <label for="full-name" className="leading-7 text-sm text-gray-600">Phone No.</label>
+                        <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Phone No.</label>
                         <input type="text" id="phone-no" name="phone-no" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                     <div className="relative flex-grow w-full">
-                        <label for="email" className="leading-7 text-sm text-gray-600">City</label>
+                        <label htmlFor="email" className="leading-7 text-sm text-gray-600">City</label>
                         <input type="email" id="city" name="city" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
                 <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                     <div className="relative flex-grow w-full">
-                        <label for="full-name" className="leading-7 text-sm text-gray-600">State</label>
+                        <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">State</label>
                         <input type="text" id="state" name="state" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                     <div className="relative flex-grow w-full">
-                        <label for="email" className="leading-7 text-sm text-gray-600">Pincode</label>
+                        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Pincode</label>
                         <input type="email" id="pincode" name="pincode" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
