@@ -4,12 +4,14 @@ const productSchema = new mongoose.Schema({
     title: {type: String, required:true},
     slug: {type:String, required:true, unique:true},
     desc: {type:String, required:true},
-    img: {type:String, required:true},
     category: {type:String, required:true},
-    size: {type:String},
-    color: {type:String},
-    price: {type:String, required:true},
-    availaible: {type:Number, required:true}
+    variants:{
+        SM:[{price:{type:Number},color:{type:String},img:{type:String},available:{type:Number}}],
+        M:[{price:{type:Number},color:{type:String},img:{type:String},available:{type:Number}}],
+        L:[{price:{type:Number},color:{type:String},img:{type:String},available:{type:Number}}],
+        XL:[{price:{type:Number},color:{type:String},img:{type:String},available:{type:Number}}],
+        XXL:[{price:{type:Number},color:{type:String},img:{type:String},available:{type:Number}}]
+    }
 }, {timestamps: true})
 
 mongoose.models = {}
